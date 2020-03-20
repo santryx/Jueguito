@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class animatinPlayer : MonoBehaviour
+public class AnimatinPlayer : MonoBehaviour
 {
 
     public float speedRotation = 200.0f;
@@ -10,11 +10,20 @@ public class animatinPlayer : MonoBehaviour
     float yDir;
     float xDir;
     Animator PlayerAni;
+   
+
+
+    public Transform mira;
+    public GameObject bala;
 
     
+
     void Start()
     {
-        PlayerAni = GetComponent<Animator>();  
+
+        PlayerAni = GetComponent<Animator>();
+        
+        
     }
 
     
@@ -31,17 +40,27 @@ public class animatinPlayer : MonoBehaviour
         PlayerAni.SetFloat("SpeedX", xDir);
         PlayerAni.SetFloat("SpeedY", yDir);
 
-        if(Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown("f"))
         {
-
+            
             PlayerAni.SetTrigger("Fire");
 
         }
 
+        if (Input.GetKeyDown("f"))
+        {
+
+            Instantiate(bala, mira.position, mira.rotation);
+            
+        }
+
         
 
+       
 
         
 
     }
+
+
 }
